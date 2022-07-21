@@ -1,0 +1,119 @@
+
+
+      <div class="container">
+        <div class="row">&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="AddUserTitleContainer">
+                <div class="addUserTitleContainer">&nbsp;
+                    <div style=font-weight:bold;>Add Details</div>
+                    <button class="btn btn-warning "(click)="addNewUserBtn()">Add +</button>
+                </div>&nbsp;
+            <div *ngIf="newUserClicked">
+                <form>
+                    <div class="form-group col-lg-5">
+                      <label for="name"><b>Name</b></label>
+                      <input name="name" type="text" class="form-control" id="name" placeholder="Enter Your Name" [(ngModel)]="model.name">
+                    </div><br>
+                    <div class="form-group col-lg-5">
+                        <label for="position"><b>Position</b></label>
+                        <input name="position" type="text" class="form-control" id="position" placeholder="Enter Your Position" [(ngModel)]="model.position">
+                      </div><br>
+                      <div class="form-group">
+                        <!-- <label for="permission"><b>Permission</b></label><br>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" name="permission" type="checkbox" id="permission" value="option1" [(ngModel)]="model.select">
+                        </div> -->
+
+
+                        <!-- table 1 -->
+
+                            <table class="table">
+                              <tr class="table-checkbox">
+                                  <th>Forms</th>
+                                  <th *ngFor="let per of perName;let i=index;">{{per}}</th>
+                              </tr>
+                              <tr>
+                                <td>Party</td>
+                                <td><input class="form-check-input" name="view" type="checkbox" id="view" value="option1" [(ngModel)]="model.view"></td>
+                                <td><input class="form-check-input" name="add" type="checkbox" id="add" value="option2" [(ngModel)]="model.add"></td>
+                                <td><input class="form-check-input" name="edit" type="checkbox" id="edit" value="option3" [(ngModel)]="model.edit"></td>
+                                <td><input class="form-check-input" name="delete" type="checkbox" id="delete" value="option4" [(ngModel)]="model.delete"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                      <div class="submitBtnContainer">
+                        <div type="submit" class="btn btn-primary" (click)="addUser()">Save</div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div><br>
+
+
+            <div class="container">
+              <h2 style="text-align: center;margin-top: 60px;margin-bottom: revert;">User Details</h2>
+
+<!-- table 2             -->
+
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="onetitle">Name</th>
+                        <th scope="col" class="twotitle">Position</th>
+                        <th scope="col" class="sixtitle">View</th>
+                        <th scope="col" class="sixtitle">Add</th>
+                        <th scope="col" class="sixtitle">Edit</th>
+                        <th scope="col" class="sixtitle">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of users; let i= index">
+                        <td class="one">{{data.name}}</td>
+                        <td class="two">{{data.position}}</td>
+
+                        <td class="three"><input class="form-ckeck-input" type="checkbox" [checked]="data.view" (change)="onChangeCheck($event)"/></td>
+                        <td class="four"><input class="form-ckeck-input" type="checkbox" [checked]="data.add" (change)="onChangeCheck($event)"/></td>
+                        <td class="five"><input class="form-ckeck-input" type="checkbox" [checked]="data.edit" (change)="onChangeCheck($event)"/></td>
+                        <td class="six"><input class="form-ckeck-input" type="checkbox" [checked]="data.delete" (change)="onChangeCheck($event)"/></td>
+                        <td>
+                            <button class="btn btn-primary" (click)="editUser(i)">Edit</button> &nbsp; &nbsp;
+                            <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+
+<!-- table 3                -->
+                <div class="editUserTitleContainer">
+                  <h2 style="text-align: center;margin-top: 75px;margin-bottom: revert;">Edit Users And Permission</h2>
+                  <div class="editUserTitleContainer">
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">View</th>
+                        <th scope="col">Add</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="form group name"><input type="text" class="form-control" id="name" name="name" [(ngModel)]="model2.name" placeholder="Name Here"></td>
+                        <td class="form group position"><input type="text" class="form-control" id="position" name="position" [(ngModel)]="model2.position" placeholder="Position Here"></td>
+                        <td class="form group select"><input class="form-check-input" type="checkbox" id="view" name="view" [(ngModel)]="model2.view"></td>
+                        <td class="form group select"><input class="form-check-input" type="checkbox" id="add" name="add" [(ngModel)]="model2.add"></td>
+                        <td class="form group select"><input class="form-check-input" type="checkbox" id="edit" name="edit" [(ngModel)]="model2.edit"></td>
+                        <td class="form group select"><input class="form-check-input" type="checkbox" id="delete" name="delete" [(ngModel)]="model2.delete"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  <button class="btn btn-primary" type="submit" (click)="updateUser()">Update</button>
+                </div>
+               </div>
+
+
+

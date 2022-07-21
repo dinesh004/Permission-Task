@@ -1,0 +1,24 @@
+
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">LogIn</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+      <main class="form-group">
+        <form [formGroup]="form" (submit)="submit()">
+          <h1 style="font-size:20px" class="h3 mb-3 fw-normal">Please sign in</h1>
+
+          <div class="form-floating">
+            <input formControlName="email" type="email" class="form-control" placeholder="Email">
+
+          </div>
+<br>
+          <div class="form-floating">
+            <input formControlName="password" type="password" class="form-control" placeholder="Password">
+          </div>
+
+          <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+        </form>
+      </main>
+    </div>
+  </div>
+</div>
