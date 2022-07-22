@@ -10,13 +10,13 @@ import { PermiService } from '../service/permi.service';
 })
 export class HomeComponent implements OnInit {
   newUserClicked = false
-  form!: FormGroup;
+  myForm!: FormGroup;
 
 
   users = [
-    {name: 'Dinesh', position: 'Web Developer', view: false, add: true, edit: false, delete: true},
-    {name: 'Virat', position: 'Python Developer', view: true, add: false, edit: true, delete: false},
-    {name: 'Rahul', position: 'Java Developer', view: false, add: true, edit: false, delete: true}
+    {name: 'Dinesh', role: 'Web Developer', view: false, add: true, edit: false, delete: true},
+    {name: 'Virat', role: 'Python Developer', view: true, add: false, edit: true, delete: false},
+    {name: 'Rahul', role: 'Java Developer', view: false, add: true, edit: false, delete: true}
   ]
 
   constructor(
@@ -25,7 +25,15 @@ export class HomeComponent implements OnInit {
      private service: PermiService) { }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.myForm = this.formBuilder.group({
+      userName: '',
+      role: '',
+      email: '',
+      password: ''
+    })
+  }
+
 
   perName = [
     "View",
@@ -35,16 +43,43 @@ export class HomeComponent implements OnInit {
   ];
 
 
-  model: any= {};
+  model: any= {
+    name: '',
+      role: '',
+      email: '',
+      password: '',
+  };
   model2: any= {};
 
 
 
   addUser(){
+    console.log(this.model);
     this.users.push(this.model);
-    this.model = {}
-    console.log(this.users);
+    // this.model = {}
+    const perm=[]
+
+    const payload={
+      userName: this.model.name,
+      role: this.model.role,
+      email: '',
+      password: '',
+      permissions:{
+        party:[
+          this.model.view?1:0,
+          this.model.add?1:0,
+          this.model.edit?1:0,
+          this.model.delete?1:0
+        ],
+      }
+    }
+    this.service.getPermissions(payload).subscribe((response: any)=>{
+      console.log(response);
+    })
+    console.log(payload);
   }
+
+
 
 
   onChangeCheck($event: any){
@@ -63,7 +98,7 @@ export class HomeComponent implements OnInit {
   myValue: any;
   editUser(editUserInfo: any){
     this.model2.name = this.users[editUserInfo].name;
-    this.model2.position = this.users[editUserInfo].position;
+    this.model2.role = this.users[editUserInfo].role;
     this.model2.view = this.users[editUserInfo].view;
     this.model2.add = this.users[editUserInfo].add;
     this.model2.edit = this.users[editUserInfo].edit;
@@ -86,4 +121,10 @@ export class HomeComponent implements OnInit {
   addNewUserBtn(){
     this.newUserClicked = !this.newUserClicked;
   }
+
+
+
+
 }
+
+

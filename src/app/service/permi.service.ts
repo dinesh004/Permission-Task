@@ -9,8 +9,8 @@ export class PermiService {
   constructor(private http:HttpClient) { }
 
 
-  getPermissions(){
+  getPermissions(payload){
     let url = 'https://blog-module.herokuapp.com/signUp';
-    return this.http.get(url);
+    return this.http.post(url,payload);
   }
 }

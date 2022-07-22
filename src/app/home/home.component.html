@@ -9,14 +9,27 @@
                 </div>&nbsp;
             <div *ngIf="newUserClicked">
                 <form>
-                    <div class="form-group col-lg-5">
+                    <div class="form-group col-g row">
+                      <div class="col">
                       <label for="name"><b>Name</b></label>
                       <input name="name" type="text" class="form-control" id="name" placeholder="Enter Your Name" [(ngModel)]="model.name">
-                    </div><br>
-                    <div class="form-group col-lg-5">
-                        <label for="position"><b>Position</b></label>
-                        <input name="position" type="text" class="form-control" id="position" placeholder="Enter Your Position" [(ngModel)]="model.position">
-                      </div><br>
+                    </div>
+
+                    <div class="form-group col-lg">
+                        <label for="role"><b>Role</b></label>
+                        <input name="role" type="text" class="form-control" id="role" placeholder="Enter Your role" [(ngModel)]="model.role">
+                      </div>
+
+                    <div class="form-group col-lg">
+                        <label for="email"><b>Email</b></label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email" [(ngModel)]="model.email">
+                      </div>
+
+                    <div class="form-group col-lg">
+                        <label for="password"><b>Password</b></label>
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Enter Your Password" [(ngModel)]="model.password">
+                    </div>
+                    </div><br><br>
                       <div class="form-group">
                         <!-- <label for="permission"><b>Permission</b></label><br>
                         <div class="form-check form-check-inline">
@@ -43,7 +56,7 @@
                         </div>
 
                       <div class="submitBtnContainer">
-                        <div type="submit" class="btn btn-primary" (click)="addUser()">Save</div>
+                        <div type="submit" class="btn btn-primary"  (click)="addUser()">Save</div>
                         </div>
                         </form>
                     </div>
@@ -60,7 +73,7 @@
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col" class="onetitle">Name</th>
-                        <th scope="col" class="twotitle">Position</th>
+                        <th scope="col" class="twotitle">Role</th>
                         <th scope="col" class="sixtitle">View</th>
                         <th scope="col" class="sixtitle">Add</th>
                         <th scope="col" class="sixtitle">Edit</th>
@@ -70,7 +83,7 @@
                     <tbody>
                         <tr *ngFor="let data of users; let i= index">
                         <td class="one">{{data.name}}</td>
-                        <td class="two">{{data.position}}</td>
+                        <td class="two">{{data.role}}</td>
 
                         <td class="three"><input class="form-ckeck-input" type="checkbox" [checked]="data.view" (change)="onChangeCheck($event)"/></td>
                         <td class="four"><input class="form-ckeck-input" type="checkbox" [checked]="data.add" (change)="onChangeCheck($event)"/></td>
@@ -92,7 +105,7 @@
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Position</th>
+                        <th scope="col">Role</th>
                         <th scope="col">View</th>
                         <th scope="col">Add</th>
                         <th scope="col">Edit</th>
@@ -101,8 +114,8 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="form group name"><input type="text" class="form-control" id="name" name="name" [(ngModel)]="model2.name" placeholder="Name Here"></td>
-                        <td class="form group position"><input type="text" class="form-control" id="position" name="position" [(ngModel)]="model2.position" placeholder="Position Here"></td>
+                        <td class="form group name"><input type="text" class="form-control" id="name1" name="name1" [(ngModel)]="model2.name" placeholder="Name Here"></td>
+                        <td class="form group role"><input type="text" class="form-control" id="role1" name="role1" [(ngModel)]="model2.role" placeholder="role Here"></td>
                         <td class="form group select"><input class="form-check-input" type="checkbox" id="view" name="view" [(ngModel)]="model2.view"></td>
                         <td class="form group select"><input class="form-check-input" type="checkbox" id="add" name="add" [(ngModel)]="model2.add"></td>
                         <td class="form group select"><input class="form-check-input" type="checkbox" id="edit" name="edit" [(ngModel)]="model2.edit"></td>
