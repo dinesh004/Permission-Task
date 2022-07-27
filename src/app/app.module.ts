@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './service/auth.guard';
 import { LoginserviceService } from './service/loginservice.service';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { PartyComponent } from './party/party.component';
+import { SharedDataService } from './service/shared-data.service';
 
 
 
@@ -34,6 +36,7 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     SidenavComponent,
     LoginComponent,
     RegistrationComponent,
+    PartyComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     MatDividerModule,
     MatListModule,
   ],
-  providers: [AuthGuard, LoginserviceService,
+  providers: [AuthGuard, LoginserviceService, SharedDataService,
   {
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
   }],

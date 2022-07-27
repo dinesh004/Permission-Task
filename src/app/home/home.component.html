@@ -56,7 +56,7 @@
                         </div>
 
                       <div class="submitBtnContainer">
-                        <div type="submit" class="btn btn-primary"  (click)="addUser()">Save</div>
+                        <div type="submit" class="btn btn-primary" (click)="addUser()">Save</div>
                         </div>
                         </form>
                     </div>
@@ -64,12 +64,12 @@
             </div><br>
 
 
-            <div class="container">
-              <h2 style="text-align: center;margin-top: 60px;margin-bottom: revert;">User Details</h2>
+            <!-- <div class="container">
+              <h2 style="text-align: center;margin-top: 60px;margin-bottom: revert;">User Details</h2> -->
 
 <!-- table 2             -->
 
-                <table class="table">
+                <!-- <table class="table">
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col" class="onetitle">Name</th>
@@ -95,10 +95,10 @@
                         </tr>
                     </tbody>
                 </table>
-              </div>
+              </div> -->
 
 <!-- table 3                -->
-                <div class="editUserTitleContainer">
+                <!-- <div class="editUserTitleContainer">
                   <h2 style="text-align: center;margin-top: 75px;margin-bottom: revert;">Edit Users And Permission</h2>
                   <div class="editUserTitleContainer">
                   <table class="table">
@@ -126,7 +126,14 @@
                   </div>
                   <button class="btn btn-primary" type="submit" (click)="updateUser()">Update</button>
                 </div>
-               </div>
+               </div> -->
+<input type="text" [(value)]="text" #name name="name">
+<button class="btn btn-danger" (click)="updateText(name.value)">Click Me</button>
+<br>
 
 
 
+<div class="container">
+  <input type="text" [(ngModel)]="enteredText">
+  <button class="btn btn-danger" (click)="onBtnClick()">Click Me</button>
+</div>

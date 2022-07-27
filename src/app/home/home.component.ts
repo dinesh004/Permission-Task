@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PermiService } from '../service/permi.service';
+import { SharedDataService } from '../service/shared-data.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { PermiService } from '../service/permi.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  msg="add new user";
   newUserClicked = false
   myForm!: FormGroup;
 
@@ -19,10 +21,15 @@ export class HomeComponent implements OnInit {
     {name: 'Rahul', role: 'Java Developer', view: false, add: true, edit: false, delete: true}
   ]
 
+  text = '';
+
+
   constructor(
      private formBuilder: FormBuilder,
      private http: HttpClient,
-     private service: PermiService) { }
+     private service: PermiService,
+     private shared: SharedDataService) {
+      }
 
 
   ngOnInit(): void {
@@ -32,6 +39,11 @@ export class HomeComponent implements OnInit {
       email: '',
       password: ''
     })
+  }
+
+
+  updateText(text){
+    this.shared.updateData(text);
   }
 
 
@@ -49,7 +61,7 @@ export class HomeComponent implements OnInit {
       email: '',
       password: '',
   };
-  model2: any= {};
+
 
 
 
@@ -62,8 +74,8 @@ export class HomeComponent implements OnInit {
     const payload={
       userName: this.model.name,
       role: this.model.role,
-      email: '',
-      password: '',
+      email: this.model.email,
+      password: this.model.password,
       permissions:{
         party:[
           this.model.view?1:0,
@@ -77,44 +89,10 @@ export class HomeComponent implements OnInit {
       console.log(response);
     })
     console.log(payload);
-  }
 
 
 
 
-  onChangeCheck($event: any){
-    const id = $event.target.value;
-    const isChecked = $event.target.checked;
-    console.log(id, isChecked);
-  }
-
-
-  deleteUser(i:any){
-    this.users.splice(i, 1);
-    console.log(i);
-  }
-
-
-  myValue: any;
-  editUser(editUserInfo: any){
-    this.model2.name = this.users[editUserInfo].name;
-    this.model2.role = this.users[editUserInfo].role;
-    this.model2.view = this.users[editUserInfo].view;
-    this.model2.add = this.users[editUserInfo].add;
-    this.model2.edit = this.users[editUserInfo].edit;
-    this.model2.delete = this.users[editUserInfo].delete;
-    this.myValue = editUserInfo;
-  }
-
-
-  updateUser(){
-    let editUserInfo = this.myValue;
-    for (let i = 0; i < this.users.length; i++) {
-      if (i==editUserInfo){
-        this.users[i] = this.model2;
-        this.model2 = {}
-        }
-    }
   }
 
 
@@ -122,9 +100,12 @@ export class HomeComponent implements OnInit {
     this.newUserClicked = !this.newUserClicked;
   }
 
+  enteredText: string = '';
+  onBtnClick(){
+    // console.log(this.enteredText);
+    this.shared.raiseDataEmitterEvent(this.enteredText);
 
-
-
+  }
 }
 
 

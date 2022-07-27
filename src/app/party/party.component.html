@@ -1,0 +1,64 @@
+<p>{{text}}</p>
+
+<p>{{inputText}}</p>
+
+
+<div class="container">
+  <h2 style="text-align: center;margin-top: 60px;margin-bottom: revert;">User Details</h2>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" class="onetitle">Name</th>
+      <th scope="col" class="twotitle">Role</th>
+      <th scope="col" class="sixtitle">View</th>
+      <th scope="col" class="sixtitle">Add</th>
+      <th scope="col" class="sixtitle">Edit</th>
+      <th scope="col" class="sixtitle">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of users; let i= index">
+      <td class="one">{{data.name}}</td>
+      <td class="two">{{data.role}}</td>
+
+      <td class="three"><input class="form-ckeck-input" type="checkbox" [checked]="data.view" (change)="onChangeCheck($event)"/></td>
+      <td class="four"><input class="form-ckeck-input" type="checkbox" [checked]="data.add" (change)="onChangeCheck($event)"/></td>
+      <td class="five"><input class="form-ckeck-input" type="checkbox" [checked]="data.edit" (change)="onChangeCheck($event)"/></td>
+      <td class="six"><input class="form-ckeck-input" type="checkbox" [checked]="data.delete" (change)="onChangeCheck($event)"/></td>
+      <td>
+          <button class="btn btn-primary" (click)="editUser(i)">Edit</button> &nbsp; &nbsp;
+          <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button></td>
+      </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="editUserTitleContainer">
+  <h2 style="text-align: center;margin-top: 75px;margin-bottom: revert;">Edit Users And Permission</h2>
+  <div class="editUserTitleContainer">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col">View</th>
+        <th scope="col">Add</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="form group name"><input type="text" class="form-control" id="name1" name="name1" [(ngModel)]="model2.name" placeholder="Name Here"></td>
+        <td class="form group role"><input type="text" class="form-control" id="role1" name="role1" [(ngModel)]="model2.role" placeholder="role Here"></td>
+        <td class="form group select"><input class="form-check-input" type="checkbox" id="view" name="view" [(ngModel)]="model2.view"></td>
+        <td class="form group select"><input class="form-check-input" type="checkbox" id="add" name="add" [(ngModel)]="model2.add"></td>
+        <td class="form group select"><input class="form-check-input" type="checkbox" id="edit" name="edit" [(ngModel)]="model2.edit"></td>
+        <td class="form group select"><input class="form-check-input" type="checkbox" id="delete" name="delete" [(ngModel)]="model2.delete"></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <button class="btn btn-primary" type="submit" (click)="updateUser()">Update</button>
+</div>
+
