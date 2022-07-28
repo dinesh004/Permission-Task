@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.service.loggedIn(this.form.value).subscribe((response: any)=>{
+      console.log(this.form.value);
+      console.log(response);
+
       if (response.status == false){
         alert(response.message);
         return false;
@@ -38,6 +41,8 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('token', response.Data.token);
         this.router.navigate(['/home']);
 
+        localStorage.setItem('user', JSON.stringify(response.Data.userDetails.permissions));
+        console.log(localStorage.getItem('user'));
     }
     ,(error)=>{
       alert('please check your email and password');

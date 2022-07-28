@@ -1,40 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { SharedDataService } from 'src/app/service/shared-data.service';
 
 @Component({
-  selector: 'app-party',
-  templateUrl: './party.component.html',
-  styleUrls: ['./party.component.scss']
+  selector: 'app-to-do-list',
+  templateUrl: './to-do-list.component.html',
+  styleUrls: ['./to-do-list.component.scss']
 })
-export class PartyComponent implements OnInit {
-
-  text = '';
+export class ToDoListComponent implements OnInit {
   model2: any= {};
   users = [
     {name: 'Dinesh', role: 'Web Developer', view: false, add: true, edit: false, delete: true},
     {name: 'Virat', role: 'Python Developer', view: true, add: false, edit: true, delete: false},
     {name: 'Rahul', role: 'Java Developer', view: false, add: true, edit: false, delete: true}
   ]
-  constructor(private shared:SharedDataService) {
-
-
-    }
-
-
+  constructor(private shared:SharedDataService) { }
 
   ngOnInit(): void {
-    this.shared.share.subscribe(x => this.text = x)
-    this.shared.updateData(this.text)
-
-    this.shared.dataEmitter.subscribe((value)=>{
-      this.inputText = value;
-    })
   }
-
-
-  inputText: string = '';
-
 
   deleteUser(i:any){
     this.users.splice(i, 1);
@@ -68,6 +50,8 @@ export class PartyComponent implements OnInit {
         }
     }
   }
+
+
 
 
 }

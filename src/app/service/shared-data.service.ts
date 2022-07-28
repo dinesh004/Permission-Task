@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedDataService {
-private content = new BehaviorSubject<any>('');
+public content = new BehaviorSubject<any>('');
 public share = this.content.asObservable();
 
 

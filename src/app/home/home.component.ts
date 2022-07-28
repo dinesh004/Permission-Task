@@ -66,7 +66,8 @@ export class HomeComponent implements OnInit {
 
 
   addUser(){
-    console.log(this.model);
+
+
     this.users.push(this.model);
     // this.model = {}
     const perm=[]
@@ -77,21 +78,24 @@ export class HomeComponent implements OnInit {
       email: this.model.email,
       password: this.model.password,
       permissions:{
-        party:[
+        blog:[
           this.model.view?1:0,
           this.model.add?1:0,
           this.model.edit?1:0,
           this.model.delete?1:0
         ],
+        toDoList:[
+          this.model.view1?1:0,
+          this.model.add2?1:0,
+          this.model.edit3?1:0,
+          this.model.delete4?1:0
+        ]
       }
     }
     this.service.getPermissions(payload).subscribe((response: any)=>{
       console.log(response);
     })
     console.log(payload);
-
-
-
 
   }
 
@@ -100,12 +104,12 @@ export class HomeComponent implements OnInit {
     this.newUserClicked = !this.newUserClicked;
   }
 
-  enteredText: string = '';
-  onBtnClick(){
-    // console.log(this.enteredText);
-    this.shared.raiseDataEmitterEvent(this.enteredText);
+  // enteredText: string = '';
+  // onBtnClick(){
+  //   // console.log(this.enteredText);
+  //   this.shared.raiseDataEmitterEvent(this.enteredText);
 
-  }
+  // }
 }
 
 

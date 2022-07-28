@@ -45,19 +45,25 @@
                                   <th *ngFor="let per of perName;let i=index;">{{per}}</th>
                               </tr>
                               <tr>
-                                <td>Party</td>
+                                <td>Blog</td>
                                 <td><input class="form-check-input" name="view" type="checkbox" id="view" value="option1" [(ngModel)]="model.view"></td>
                                 <td><input class="form-check-input" name="add" type="checkbox" id="add" value="option2" [(ngModel)]="model.add"></td>
                                 <td><input class="form-check-input" name="edit" type="checkbox" id="edit" value="option3" [(ngModel)]="model.edit"></td>
                                 <td><input class="form-check-input" name="delete" type="checkbox" id="delete" value="option4" [(ngModel)]="model.delete"></td>
                                 </tr>
+
+                                <tr>
+                                  <td>ToDoList</td>
+                                  <td><input class="form-check-input" name="view1" type="checkbox" id="view1" value="option5" [(ngModel)]="model.view1"></td>
+                                  <td><input class="form-check-input" name="add2" type="checkbox" id="add2" value="option6" [(ngModel)]="model.add2"></td>
+                                  <td><input class="form-check-input" name="edit3" type="checkbox" id="edit3" value="option7" [(ngModel)]="model.edit3"></td>
+                                  <td><input class="form-check-input" name="delete4" type="checkbox" id="delete4" value="option8" [(ngModel)]="model.delete4"></td>
+                                  </tr>
                             </table>
 
                         </div>
 
-                      <div class="submitBtnContainer">
-                        <div type="submit" class="btn btn-primary" (click)="addUser()">Save</div>
-                        </div>
+                        <div type="submit" class="btn btn-primary" (click)="addUser()" >Save</div>
                         </form>
                     </div>
                 </div>
@@ -133,7 +139,7 @@
 
 
 
-<div class="container">
+<!-- <div class="container">
   <input type="text" [(ngModel)]="enteredText">
   <button class="btn btn-danger" (click)="onBtnClick()">Click Me</button>
-</div>
+</div> -->

@@ -14,3 +14,5 @@ export class PermiService {
     return this.http.post(url,payload);
   }
 }
+
+

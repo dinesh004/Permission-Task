@@ -21,8 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './service/auth.guard';
 import { LoginserviceService } from './service/loginservice.service';
 import { TokenInterceptor } from './interceptor/token.interceptor';
-import { PartyComponent } from './party/party.component';
 import { SharedDataService } from './service/shared-data.service';
+import { BlogModule } from './blog/blog.module';
+import { ToDoListModule } from './to-do-list/to-do-list.module';
 
 
 
@@ -36,11 +37,13 @@ import { SharedDataService } from './service/shared-data.service';
     SidenavComponent,
     LoginComponent,
     RegistrationComponent,
-    PartyComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BlogModule,
+    ToDoListModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
