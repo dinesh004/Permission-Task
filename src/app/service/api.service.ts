@@ -22,6 +22,4 @@ perData(){
   return this.http.get(this.permissions);
 }
 
-
-
 }
