@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     {name: 'Rahul', role: 'Java Developer', view: false, add: true, edit: false, delete: true}
   ]
 
-  text = '';
+  // text = '';
 
 
   constructor(
@@ -42,9 +42,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  updateText(text){
-    this.shared.updateData(text);
-  }
+  // updateText(text){
+  //   this.shared.updateData(text);
+  // }
 
 
   perName = [
@@ -110,6 +110,11 @@ export class HomeComponent implements OnInit {
   //   this.shared.raiseDataEmitterEvent(this.enteredText);
 
   // }
+
+
+
+
+
 }
 
 

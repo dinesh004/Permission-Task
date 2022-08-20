@@ -13,6 +13,7 @@ export class PermiService {
     let url = 'https://blog-module.herokuapp.com/signUp';
     return this.http.post(url,payload);
   }
+
 }
 
 
