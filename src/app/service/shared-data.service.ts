@@ -4,21 +4,21 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedDataService {
-public content = new BehaviorSubject<any>('');
-public share = this.content.asObservable();
+// public content = new BehaviorSubject<any>('');
+// public share = this.content.asObservable();
 
 
   constructor() { }
 
-updateData(text){
-  this.content.next(text);
-}
+// updateData(text){
+//   this.content.next(text);
+// }
 
-public dataEmitter = new Subject<string>();
+// public dataEmitter = new Subject<string>();
 
-raiseDataEmitterEvent(data: string) {
-  this.dataEmitter.next(data);
-}
+// raiseDataEmitterEvent(data: string) {
+//   this.dataEmitter.next(data);
+// }
 
 
 }

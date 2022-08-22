@@ -1,4 +1,4 @@
 export class Permission {
-  "blog":[]
-  "toDoList":[]
+  blog: [number]
+  toDoList: [number]
 }
