@@ -52,8 +52,102 @@ constructor(private router:Router){}
 
     }
 
+
+
+
   }
+
+  accessAddRights(moduleName):Boolean{
+    if (localStorage.getItem('token')){
+      let permission = localStorage.getItem('user');
+      permission =JSON.parse(permission);
+      console.log(permission);
+      let values = [];
+      // let moduleName = route.data["moduleName"];
+      console.log(moduleName);
+
+      let keys = Object.keys(permission);
+      keys.forEach(key => {
+
+        if(key == moduleName){
+          values = permission[key];
+          console.log(values);
+        }
+      })
+
+      if(values[1] == 1){
+        return true;
+      } else{
+        // this.router.navigate(['/']);
+        // alert("You don't have permission to access this page");
+        return false;
+      }
+
+
+  }
+
+
 
 
 }
 
+accessEditRights(moduleName):Boolean{
+  if (localStorage.getItem('token')){
+    let permission = localStorage.getItem('user');
+    permission =JSON.parse(permission);
+    console.log(permission);
+    let values = [];
+    // let moduleName = route.data["moduleName"];
+    console.log(moduleName);
+
+    let keys = Object.keys(permission);
+    keys.forEach(key => {
+
+      if(key == moduleName){
+        values = permission[key];
+        console.log(values);
+      }
+    })
+
+    if(values[2] == 1){
+      return true;
+    } else{
+      // this.router.navigate(['/']);
+      // alert("You don't have permission to access this page");
+      return false;
+    }
+
+
+}
+}
+
+accessDelRights(moduleName):Boolean{
+  if (localStorage.getItem('token')){
+    let permission = localStorage.getItem('user');
+    permission =JSON.parse(permission);
+    console.log(permission);
+    let values = [];
+    // let moduleName = route.data["moduleName"];
+    console.log(moduleName);
+
+    let keys = Object.keys(permission);
+    keys.forEach(key => {
+
+      if(key == moduleName){
+        values = permission[key];
+        console.log(values);
+      }
+    })
+
+    if(values[3] == 1){
+      return true;
+    } else{
+      // this.router.navigate(['/']);
+      // alert("You don't have permission to access this page");
+      return false;
+    }
+
+
+}
+}
+}

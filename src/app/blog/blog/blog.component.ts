@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PermiService } from 'src/app/service/permi.service';
+import { PermissionGuard } from 'src/app/service/permission.guard';
 import { SharedDataService } from 'src/app/service/shared-data.service';
 
 @Component({
@@ -13,6 +14,14 @@ export class BlogComponent implements OnInit {
   model2: any= {};
   newUserClicked = false
   myForm!: FormGroup;
+
+
+  add:boolean = false;
+  edit:boolean = false;
+  delete:boolean = false;
+
+
+  hidden = false;
   users = [
     {name: 'Dinesh', role: 'Web Developer', view: false, add: true, edit: false, delete: true},
     {name: 'Virat', role: 'Python Developer', view: true, add: false, edit: true, delete: false},
@@ -21,7 +30,7 @@ export class BlogComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
     private service: PermiService,
-    private shared: SharedDataService) { }
+    public permissionGuard: PermissionGuard) { }
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
@@ -30,6 +39,35 @@ export class BlogComponent implements OnInit {
       email: '',
       password: ''
     })
+
+
+    // if(this.permissionGuard.accessAddRights('blog')){
+    //   this.add = false;
+
+    // }
+    // else{
+    //   this.add = true;
+    // }
+
+    // if(this.permissionGuard.accessEditRights('blog')){
+    //   this.disabled = false;
+
+    // }
+    // else{
+    //   this.disabled = true;
+    // }
+
+    // if(this.permissionGuard.accessDelRights('blog')){
+    //   this.disabled = false;
+
+    // }
+    // else{
+    //   this.disabled = true;
+    // }
+    this.addUser1()
+    this.editUser1()
+    this.deleteUser1()
+
   }
 
 
@@ -83,6 +121,8 @@ export class BlogComponent implements OnInit {
     })
     console.log(payload);
 
+
+
   }
 
 
@@ -90,6 +130,23 @@ export class BlogComponent implements OnInit {
   deleteUser(i:any){
     this.users.splice(i, 1);
     console.log(i);
+    // if(this.permissionGuard.accessDelRights('blog')){
+    //   this.disabled = false;
+    // }
+    // else{
+    //   this.disabled = true;
+    // }
+
+  }
+
+  deleteUser1(){
+    if(this.permissionGuard.accessDelRights('blog')){
+      this.delete = false;
+
+    }
+    else{
+      this.delete = true;
+    }
   }
 
   onChangeCheck($event: any){
@@ -108,6 +165,22 @@ export class BlogComponent implements OnInit {
     this.model2.edit = this.users[editUserInfo].edit;
     this.model2.delete = this.users[editUserInfo].delete;
     this.myValue = editUserInfo;
+    // if(this.permissionGuard.accessEditRights('blog')){
+    //   this.disabled = false;
+    // }
+    // else{
+    //   this.disabled = true;
+    // }
+  }
+
+
+  editUser1(){
+    if(this.permissionGuard.accessEditRights('blog')){
+      this.edit = false;
+    }
+    else{
+      this.edit = true;
+    }
   }
 
   updateUser(){
@@ -122,7 +195,23 @@ export class BlogComponent implements OnInit {
 
   addNewUserBtn(){
     this.newUserClicked = !this.newUserClicked;
+
+    }
+
+
+    addUser1(){
+      if(this.permissionGuard.accessAddRights('blog')){
+        this.add = false;
+
+      }
+      else{
+        this.add = true;
+      }
+    }
   }
 
 
-}
+
+
+
+
