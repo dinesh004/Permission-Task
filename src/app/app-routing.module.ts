@@ -8,8 +8,9 @@ import { PermissionGuard } from './service/permission.guard';
 import { ToDoListComponent } from './to-do-list/to-do-list/to-do-list.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent
-  , data: { moduleName: 'user' }
+  { path: 'home', component: HomeComponent,
+  canActivate: [AuthGuard],
+   data: { moduleName: 'user' }
   },
 
   { path: 'blog', component: BlogComponent, loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
