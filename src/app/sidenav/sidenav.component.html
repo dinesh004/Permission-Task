@@ -9,10 +9,10 @@
     <mat-icon>home</mat-icon> User
   </a>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/blog">
+  <a mat-list-item routerLinkActive="list-item-active" [hidden]="this.blog" routerLink="/blog">
     <mat-icon>account_box</mat-icon> Blog
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/todolist">
+  <a mat-list-item routerLinkActive="list-item-active" [hidden]="this.toDoList" routerLink="/todolist">
     <mat-icon>account_box</mat-icon> ToDoList
   </a>
 

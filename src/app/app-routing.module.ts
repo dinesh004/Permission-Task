@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { PermissionGuard } from './service/permission.guard';
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToDoListComponent } from './to-do-list/to-do-list/to-do-list.component';
 
 const routes: Routes = [
@@ -24,6 +25,12 @@ const routes: Routes = [
   canActivate: [PermissionGuard],
   data : {moduleName : 'toDoList'},
 },
+
+  {path: 'sidenav', component:SidenavComponent, loadChildren: () => import('./sidenav/sidenav.module').then(m => m.SidenavModule),
+  canActivate: [PermissionGuard],
+  data : {moduleName: ['blog', 'toDoList']},
+},
+
 
   { path: '**', component: LoginComponent },
 ];

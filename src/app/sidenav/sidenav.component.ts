@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PermissionGuard } from 'src/app/service/permission.guard';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,10 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
-  constructor(private router:Router ) { }
+  blog:boolean = false;
+  toDoList:boolean = false;
+  hidden = false;
+  constructor(private router:Router,
+    public permissionGuard: PermissionGuard) { }
 
   ngOnInit(): void {
+    this.viewBlog()
+    this.viewToDoList()
   }
 
   sideBarOpen = true;
@@ -25,6 +31,24 @@ logout(){
   this.router.navigate(['/login']);
 }
 
+viewBlog(){
+  if(this.permissionGuard.addViewRights('blog')){
+    this.blog = false;
 
+  }
+  else{
+    this.blog = true;
+  }
+}
+
+viewToDoList(){
+  if(this.permissionGuard.addViewRights('toDoList')){
+    this.toDoList = false;
+
+  }
+  else{
+    this.toDoList = true;
+  }
+}
 
 }

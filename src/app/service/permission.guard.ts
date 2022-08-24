@@ -11,6 +11,7 @@ constructor(private router:Router){}
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+
     if (localStorage.getItem('token')){
       let permission = localStorage.getItem('user');
       permission =JSON.parse(permission);
@@ -35,19 +36,7 @@ constructor(private router:Router){}
         alert("You don't have permission to access this page");
         return false;
       }
-
-
-      // if (moduleName.length == 1){
-      //   switch (moduleName[0]){
-      //     case "blog":
-      //       if(values.includes("blog"))return true;
-      //       else{
-      //         this.router.navigate(['/home']);
-      //         return false;
-      //       }
-
-      //   }
-      // }
+    }
     return true;
 
     }
@@ -55,7 +44,8 @@ constructor(private router:Router){}
 
 
 
-  }
+
+
 
   accessAddRights(moduleName):Boolean{
     if (localStorage.getItem('token')){
@@ -150,4 +140,37 @@ accessDelRights(moduleName):Boolean{
 
 }
 }
+
+
+
+addViewRights(moduleName):Boolean{
+  if (localStorage.getItem('token')){
+    let permission = localStorage.getItem('user');
+    permission =JSON.parse(permission);
+    console.log(permission);
+    let values = [];
+    // let moduleName = route.data["moduleName"];
+    console.log(moduleName);
+
+    let keys = Object.keys(permission);
+    keys.forEach(key => {
+
+      if(key == moduleName){
+        values = permission[key];
+        console.log(values);
+      }
+    })
+
+    if(values[0] == 1){
+      return true;
+    } else{
+      // this.router.navigate(['/']);
+      // alert("You don't have permission to access this page");
+      return false;
+    }
+
+
 }
+
+
+}}

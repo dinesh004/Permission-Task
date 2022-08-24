@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.myForm = this.formBuilder.group({
       userName: '',
       role: '',
@@ -93,6 +94,7 @@ export class HomeComponent implements OnInit {
       }
     }
     this.service.getPermissions(payload).subscribe((response: any)=>{
+      alert('User created successfully')
       console.log(response);
     })
     console.log(payload);

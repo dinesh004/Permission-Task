@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem('user', JSON.stringify(response.Data.userDetails.permissions));
         console.log(localStorage.getItem('user'));
+        alert('login success')
+
     }
     ,(error)=>{
       alert('please check your email and password');

@@ -5,7 +5,7 @@
             <div class="AddUserTitleContainer">
                 <div class="addUserTitleContainer">&nbsp;
                     <div style=font-weight:bold;>Add Details</div>
-                    <button class="btn btn-warning " [disabled]="this.add" (click)="addNewUserBtn()">Add +</button>
+                    <button class="btn btn-warning " [hidden]="this.add" (click)="addNewUserBtn()">Add +</button>
                 </div>&nbsp;
             <div *ngIf="newUserClicked">
                 <form>
@@ -102,8 +102,8 @@
       <td class="five"><input class="form-ckeck-input" type="checkbox" [checked]="data.edit" (change)="onChangeCheck($event)"/></td>
       <td class="six"><input class="form-ckeck-input" type="checkbox" [checked]="data.delete" (change)="onChangeCheck($event)"/></td>
       <td>
-          <button class="btn btn-primary" [disabled]="this.edit" (click)="editUser(i)">Edit</button> &nbsp; &nbsp;
-          <button class="btn btn-danger" [disabled]="this.delete" (click)="deleteUser(i)">Delete</button></td>
+          <button class="btn btn-primary" [hidden]="this.edit" (click)="editUser(i)">Edit</button> &nbsp; &nbsp;
+          <button class="btn btn-danger" [hidden]="this.delete" (click)="deleteUser(i)">Delete</button></td>
       </tr>
   </tbody>
 </table>
